@@ -27,7 +27,7 @@ class PostController {
   }
 
   getPostById = (request: express.Request, response: express.Response) => {
-    const id = request.params.id;
+    const id: string = request.params.id;
     postModel
       .findById(id)
       .then(post => response.status(200).send(post))
