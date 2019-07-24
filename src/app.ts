@@ -4,16 +4,21 @@ import bodyParser from 'body-parser';
 
 import mongoose from 'mongoose';
 
+import Controller from './interfaces/controller.interface';
+import errorMiddleware from './middleware/error.middleware';
+
 class App {
   public app: express.Application;
   public port: number;
 
-  constructor(controllers: any[], port: number) {
+  constructor(controllers: Controller[], port: number) {
     this.app = express();
     this.port = port;
+
+    this.connectToTheDatabase();
     this.initializeMiddlewares();
     this.initializeControllers(controllers);
-    this.connectToTheDatabase();
+    this.initializeErrorhandling();
   }
 
   public listen() {
@@ -26,7 +31,11 @@ class App {
     this.app.use(bodyParser.json());
   }
 
-  private initializeControllers(controllers: any[]) {
+  private initializeErrorhandling(){
+    this.app.use(errorMiddleware);
+  }
+
+  private initializeControllers(controllers: Controller[]) {
     controllers.forEach(controller => {
       this.app.use('/', controller.router);
     });
