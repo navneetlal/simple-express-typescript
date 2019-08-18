@@ -1,3 +1,11 @@
+/**
+ * @file Creates a Class PostController that will initialize all the routes.
+ * @this PostController
+ * @exports PostController
+ * 
+ * @author Navneet Lal Gupta
+ */
+
 import express from 'express';
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
@@ -9,6 +17,9 @@ class PostController {
   public path = '/posts';
   public router = express.Router();
 
+  /**
+   * @constructor
+   */
   constructor() {
     this.initializeRoutes();
   }
@@ -19,6 +30,12 @@ class PostController {
     this.router.post(this.path, this.createPost);
   }
 
+  /**
+   * 
+   * @param request 
+   * @param response 
+   * @param next 
+   */
   getAllPosts = (request: Request, response: Response, next: NextFunction) => {
     postModel
       .find()
@@ -28,6 +45,12 @@ class PostController {
       })
   }
 
+  /**
+   * 
+   * @param request 
+   * @param response 
+   * @param next 
+   */
   getPostById = (request: Request, response: Response, next: NextFunction) => {
     const id = new mongoose.Types.ObjectId(request.params.id);
     postModel
@@ -39,6 +62,12 @@ class PostController {
       })
   }
 
+  /**
+   * 
+   * @param request 
+   * @param response 
+   * @param next 
+   */
   createPost = (request: Request, response: Response, next: NextFunction) => {
     const post: Post = request.body;
     postModel

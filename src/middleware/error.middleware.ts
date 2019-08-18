@@ -1,3 +1,8 @@
+/**
+ * @description Error handler middleware, sends error response to client.
+ * @exports errorMiddleware
+ */
+
 import { NextFunction, Request, Response } from 'express';
 
 import HttpException from '../exceptions/HttpException';

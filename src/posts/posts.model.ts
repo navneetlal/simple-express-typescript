@@ -1,3 +1,7 @@
+/**
+ * @description Defines the model and schema to used by mongoose.
+ * @exports postModel
+ */
 import mongoose from 'mongoose';
 
 import Post from './posts.interface';
