@@ -22,5 +22,19 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navneetlal/simple-express-typescript.git"
+  },
+  "keywords": [
+    "Express",
+    "TypeScript",
+    "MVC",
+    "MongoDB"
+  ],
+  "bugs": {
+    "url": "https://github.com/navneetlal/simple-express-typescript/issues"
+  },
+  "homepage": "https://github.com/navneetlal/simple-express-typescript#readme"
 }
